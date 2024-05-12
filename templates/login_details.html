@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+         a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Login Details</h1>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>USER ID</th>
+                            <th>USER NAME</th>
+                            <th>E-MAIL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.user_id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-8 offset-md-2">
+                <canvas id="userChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+
+    <script>
+        var ctx = document.getElementById('userChart').getContext('2d');
+        var backgroundColors = [];
+        var borderColors = [];
+        {% for user in users %}
+            backgroundColors.push('rgba(54, 162, 235, 0.2)');
+            borderColors.push('rgba(54, 162, 235, 1)');
+        {% endfor %}
+
+        var userChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [{% for user in users %}'{{ user.username }}',{% endfor %}],
+                datasets: [{
+                    label: 'Number of Users',
+                    data: [{% for user in users %}1,{% endfor %}],
+                    backgroundColor: backgroundColors,
+                    borderColor: borderColors,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

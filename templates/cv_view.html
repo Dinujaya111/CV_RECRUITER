@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded CVs</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .cv-list {
+            flex: 1;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .image-container {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 72%;
+            height: auto;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .quiz-button,
+        .cv-info-button,
+        .online-button {
+            padding: 15px 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .quiz-button:hover,
+        .cv-info-button:hover,
+        .online-button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('dashboard') }}" class="back-button">Back</a>
+
+    <div class="container">
+        <div class="cv-list">
+            <br><br><br><br><br><br><br><br><br><br>
+            <h1>Uploaded CVs</h1>
+            {% if cv_files %}
+                <ul>
+                    {% for cv_file in cv_files %}
+                        <li>{{ cv_file[0] }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No CVs uploaded yet.</p>
+            {% endif %}
+
+            <br><br>
+            <div class="button-container">
+                <a href="{{ url_for('cv_info') }}" class="cv-info-button">CV Info</a>
+                <a href="{{ url_for('quiz') }}" class="quiz-button">Take Quiz</a>
+                <a href="{{ url_for('online_interview') }}" class="online-button">Online Interview</a>
+            </div>
+
+        </div>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='Img/10.png') }}" alt="Image">
+        </div>
+    </div>
+</body>
+</html>

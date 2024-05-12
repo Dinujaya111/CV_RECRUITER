@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Analysis Results</h1>
+    </center>
+    <br><br>
+
+    <center>
+    <h2 style="color: green;">Quiz Results</h2>
+    <div id="quiz_scores_chart"></div>
+
+     <h2 style="color: orange;">Skill Scores</h2>
+    <div id="skill_scores_chart"></div>
+
+    <h2 style="color: purple;">Skill Ranking</h2>
+    <div id="skill_counts_chart"></div>
+    </center>
+
+     <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+
+    <script>
+        var quiz_scores_data = {{ quiz_scores_data | tojson }};
+        var skill_scores_data = {{ skill_scores_data | tojson }};
+        var skill_counts_data = {{ skill_counts_data | tojson }};
+
+        var quiz_scores_trace = {
+            labels: quiz_scores_data.map(function(row) { return row[1]; }),
+            values: quiz_scores_data.map(function(row) { return row[2]; }),
+            type: 'pie'
+        };
+
+        var skill_scores_trace = {
+            labels: skill_scores_data.map(function(row) { return row[1]; }),
+            values: skill_scores_data.map(function(row) { return row[2]; }),
+            type: 'pie'
+        };
+
+        var skill_counts_trace = {
+            labels: skill_counts_data.map(function(row) { return row[0]; }),
+            values: skill_counts_data.map(function(row) { return row[1]; }),
+            type: 'pie'
+        };
+
+        var quiz_scores_layout = {
+            height: 600,
+            width: 700
+        };
+
+        var skill_scores_layout = {
+            height: 600,
+            width: 700
+        };
+
+        var skill_counts_layout = {
+            height: 600,
+            width: 700
+        };
+
+        Plotly.newPlot('quiz_scores_chart', [quiz_scores_trace], quiz_scores_layout);
+        Plotly.newPlot('skill_scores_chart', [skill_scores_trace], skill_scores_layout);
+        Plotly.newPlot('skill_counts_chart', [skill_counts_trace], skill_counts_layout);
+    </script>
+</body>
+</html>

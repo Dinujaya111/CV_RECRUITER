@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+
+<style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 40px;
+      justify-content: center;
+      margin-top: 120px;
+    }
+
+    .button {
+      text-decoration: none;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .info-button {
+      background-color: #007bff;
+      color: #fff;
+      width:95%;
+    }
+
+    .info-button:hover {
+      background-color: #0069d9;
+    }
+
+    .view-button {
+      background-color: #ffc107;
+      color: #fff;
+      width:94%;
+    }
+
+    .view-button:hover {
+      background-color: #ffb300;
+    }
+
+    .interview-button {
+      background-color: #28a745;
+      color: #fff;
+      width:95%;
+    }
+
+    .interview-button:hover {
+      background-color: #219653;
+    }
+
+    .leaderboard-button {
+      background-color: #dc3545;
+      color: #fff;
+      width:94%;
+    }
+
+    .leaderboard-button:hover {
+      background-color: #c0392b;
+    }
+
+    .visualize-button {
+        background-color: purple;
+        color: #fff;
+        width:95%;
+    }
+
+    .visualize-button:hover {
+        background-color: #660066;
+    }
+
+    .details-button {
+      background-color: #17a2b8;
+      color: #fff;
+      width:95%;
+    }
+
+    .details-button:hover {
+      background-color: #138496;
+    }
+
+    .logout-button {
+      background-color: blue;
+      padding:16px;
+      color: #fff;
+      width:95%;
+      display: block;
+      text-align: center;
+      margin-top: 150px;
+    }
+
+    .logout-button:hover {
+      background-color: darkblue;
+    }
+</style>
+</head>
+<body>
+<h1>Admin Dashboard</h1>
+<center>
+    <div class="button-container">
+      <a href="{{ url_for('all_cv_info') }}" class="button info-button">Every CV Information</a>
+      <a href="{{ url_for('every_cv_view') }}" class="button view-button">Every CV View</a>
+      <a href="{{ url_for('leaderboard') }}" class="button leaderboard-button">Leaderboard</a>
+      <a href="{{ url_for('analysis_result') }}" class="button visualize-button">Visualize Leaderboard</a>
+      <a href="{{ url_for('login_details') }}" class="button details-button">Login Details</a>
+      <a href="{{ url_for('online_interview') }}" class="button interview-button">Online Interview</a>
+
+    </div>
+</center>
+<center>
+  <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Interview</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            width: 50%;
+            height:100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-container a.button {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        .form-container a.button:hover {
+            background-color: #0056b3;
+        }
+
+        .image-container {
+            width: 50%;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 70%;
+            height: auto;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+</head>
+<body>
+    <a href="{{ url_for('admin_dashboard') }}" class="back-button">Back</a>
+    <div class="container">
+        <div class="form-container">
+            <h1>Online Interview</h1>
+            <br><br>
+            <a href="https://teams.microsoft.com" target="_blank" class="button">Microsoft Teams</a>
+            <br>
+            <a href="https://mail.google.com" target="_blank" class="button">Gmail</a>
+
+        </div>
+
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='Img/12.png') }}" alt="Image">
+        </div>
+    </div>
+</body>
+</html>

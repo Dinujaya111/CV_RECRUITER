@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Your CV</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            width: 50%;
+            height:100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-container form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-container form input {
+            width: 90%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container form button {
+            width: 94%;
+            padding: 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container form button:hover {
+            background-color: #0056b3;
+        }
+
+        .image-container {
+            width: 50%;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 70%;
+            height: auto;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+</head>
+<body>
+    <a href="{{ url_for('index') }}" class="back-button">Back</a>
+    <div class="container">
+        <div class="form-container">
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <h1>Upload Your CV</h1>
+            <br><br><br>
+            <form method="POST" action="{{ url_for('upload_file') }}" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".txt, .pdf, .docx">
+                <br><br>
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='Img/10.png') }}" alt="Image">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CV Analysis Result</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .info-section {
+        margin-bottom: 20px;
+    }
+
+    .blue-header {
+        color: #007bff;
+    }
+
+    .info-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .info-list li {
+        margin-bottom: 5px;
+    }
+
+    .info-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .info-table th, .info-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .info-table th {
+        background-color: #f2f2f2;
+    }
+
+    .green-check {
+        color: green;
+    }
+
+   .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            z-index: 1;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+</style>
+<body>
+
+<a href="{{ url_for('cv_view') }}" class="back-button">Back</a>
+
+    <div class="container">
+        <h1>CV Analysis Result</h1>
+
+        <div class="info-section">
+            <h2 class="blue-header">Skills</h2>
+            <table class="info-table">
+                <tr>
+                    <th>Skill</th>
+                </tr>
+                {% for skill in skills %}
+                <tr>
+                    <td>{{ skill }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="info-section">
+            <h2 class="blue-header">Education</h2>
+            <ul class="info-list">
+                {% for edu in education %}
+                <li><span class="green-check">&#10004;</span> {{ edu }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2 class="blue-header">Experience</h2>
+            <ul class="info-list">
+                {% for exp in experience %}
+                <li><span class="green-check">&#10004;</span> {{ exp }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

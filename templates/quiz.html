@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Development Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .option {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        .submit-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            z-index: 1;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<a href="{{ url_for('cv_view') }}" class="back-button">Back</a>
+    <div class="container">
+        <h1>Quiz Round</h1>
+
+        <form action="/submit_quiz" method="post">
+            <!-- Question 1 -->
+            <div class="question">
+                <p>1. What does HTML stand for?</p>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q1" value="A"> A. Hyper Text Markup Language</div>
+                    <div class="option"><input type="radio" name="q1" value="B"> B. Hyperlinks and Text Markup Language</div>
+                    <div class="option"><input type="radio" name="q1" value="C"> C. Home Tool Markup Language</div>
+                    <div class="option"><input type="radio" name="q1" value="D"> D. Hyper Tool Markup Language</div>
+                </div>
+            </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. Which programming language is commonly used for backend web development?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="q2" value="A">A. JavaScript</div>
+                <div class="option"><input type="radio" name="q2" value="B">B. Python</div>
+                <div class="option"><input type="radio" name="q2" value="C">C. HTML</div>
+                <div class="option"><input type="radio" name="q2" value="D">D. CSS</div>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <p>3. What is the purpose of CSS?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="q3" value="A">A. To define the structure of a web page</div>
+                <div class="option"><input type="radio" name="q3" value="B">B. To define the behavior of elements on a web page</div>
+                <div class="option"><input type="radio" name="q3" value="C">C. To define the style and layout of elements on a web page</div>
+                <div class="option"><input type="radio" name="q3" value="D">D. To define the interactions of a web page</div>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <p>4. Which programming language is commonly used for mobile app development?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="q4" value="A">A. Java</div>
+                <div class="option"><input type="radio" name="q4" value="B">B. C++</div>
+                <div class="option"><input type="radio" name="q4" value="C">C. Swift</div>
+                <div class="option"><input type="radio" name="q4" value="D">D. Python</div>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <p>5. What does API stand for?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="q5" value="A">A. Application Programming Interface</div>
+                <div class="option"><input type="radio" name="q5" value="B">B. Advanced Programming Interface</div>
+                <div class="option"><input type="radio" name="q5" value="C">C. Algorithmic Programming Interface</div>
+                <div class="option"><input type="radio" name="q5" value="D">D. Application Protocol Interface</div>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question">
+            <p>6. What is the purpose of version control systems like Git?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="q6" value="A">A. To manage project schedules</div>
+                <div class="option"><input type="radio" name="q6" value="B">B. To control access to the internet</div>
+                <div class="option"><input type="radio" name="q6" value="C">C. To track changes in code and collaborate with others</div>
+                <div class="option"><input type="radio" name="q6" value="D">D. To create visual designs for websites</div>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question">
+            <p>7. Which type of database is commonly used for web applications?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="q7" value="A">A. Relational Database</div>
+                <div class="option"><input type="radio" name="q7" value="B">B. NoSQL Database</div>
+                <div class="option"><input type="radio" name="q7" value="C">C. Hierarchical Database</div>
+                <div class="option"><input type="radio" name="q7" value="D">D. Network Database</div>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question">
+            <p>8. What does IDE stand for?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="q8" value="A">A. Integrated Development Environment</div>
+                <div class="option"><input type="radio" name="q8" value="B">B. Interactive Development Environment</div>
+                <div class="option"><input type="radio" name="q8" value="C">C. Internet Development Environment</div>
+                <div class="option"><input type="radio" name="q8" value="D">D. Integrated Deployment Environment</div>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question">
+            <p>9. Which programming language is commonly used for machine learning?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="q9" value="A">A. Python</div>
+                <div class="option"><input type="radio" name="q9" value="B">B. Java</div>
+                <div class="option"><input type="radio" name="q9" value="C">C. C#</div>
+                <div class="option"><input type="radio" name="q9" value="D">D. Ruby</div>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question">
+            <p>10. What is the purpose of a software framework?</p>
+            <div class="options">
+                <div class="option"><input type="radio" name="q10" value="A">A. To provide a foundation for building software applications</div>
+                <div class="option"><input type="radio" name="q10" value="B">B. To optimize computer hardware</div>
+                <div class="option"><input type="radio" name="q10" value="C">C. To design user interfaces</div>
+                <div class="option"><input type="radio" name="q10" value="D">D. To manage internet connections</div>
+            </div>
+        </div>
+            <button type="submit" class="submit-button">Submit Quiz</button>
+        </form>
+    </div>
+</body>
+</html>

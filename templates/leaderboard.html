@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+         a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+      <center>
+        <h1>Leaderboard</h1>
+      </center>
+
+        <h2>Quiz Scores</h2>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>Score</th>
+        </tr>
+        {% for rank, (user_id, username, score) in enumerate(user_scores, start=1) %}
+        <tr>
+            <td>{{ rank }}</td>
+            <td>{{ user_id }}</td>
+            <td>{{ username }}</td>
+            <td>{{ score }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Skill Scores</h2>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>Total Skill Count</th>
+        </tr>
+        {% for rank, (user_id, username, total_skill_count) in enumerate(skill_scores, start=1) %}
+        <tr>
+            <td>{{ rank }}</td>
+            <td>{{ user_id }}</td>
+            <td>{{ username }}</td>
+            <td>{{ total_skill_count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Skill Counts</h2>
+    <table>
+        <tr>
+            <th>Skill</th>
+            <th>Count</th>
+        </tr>
+        {% for skill, count in skill_counts %}
+        <tr>
+            <td>{{ skill }}</td>
+            <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+ <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
